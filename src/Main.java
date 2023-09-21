@@ -25,7 +25,6 @@ public class Main {
 
         System.out.println((winners.size() > 1 ?  "The Winners are ": "The Winner is ") + nameOfWinners +
                 "with " + winners.get(0).getScore() + " point " + (winners.get(0).getScore() == 1 ? "" : "s"));
-
     }
 
     public static ArrayList<Player> initialize(){
@@ -66,7 +65,7 @@ public class Main {
             player.rollDice();
             if (guess == player.getDieValue()){
                 player.increaseScore();
-                System.out.println( player.getName() + " rolled a " + player.getDieValue() + ". 1 point for you!");
+                System.out.println( player.getName() + " rolled a " + player.getDieValue() + ". You get 1 point!");
             }
             else {
                 System.out.println(player.getName() + " rolled a " + player.getDieValue());
