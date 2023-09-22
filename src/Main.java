@@ -4,7 +4,7 @@ import java.util.Scanner;
 public class Main {
     static Scanner sc = new Scanner(System.in);
     public static void main(String[] args) {
-        int numberOfRounds = 5;
+        int numberOfRounds = 2;
 
         ArrayList<Player> players = initialize();
 
@@ -16,15 +16,25 @@ public class Main {
         ArrayList<Player> winners =  getWinners(players);
 
         StringBuilder builder = new StringBuilder();
-        for (Player player: winners) {
-            builder.append(player.getName());
-            builder.append(", ");
+
+        if (winners.size() != 1){
+            for (int i = 0; i < winners.size(); i++) {
+                builder.append(winners.get(i).getName());
+                if (i == winners.size() -2 ){
+                    builder.append(" and ");
+                }else if(i < winners.size()-2){
+                    builder.append(", ");
+                }
+            }
+        } else {
+            builder.append(winners.get(0).getName());
         }
+
 
         String nameOfWinners = builder.toString();
 
-        System.out.println((winners.size() > 1 ?  "The Winners are ": "The Winner is ") + nameOfWinners +
-                "with " + winners.get(0).getScore() + " point " + (winners.get(0).getScore() == 1 ? "" : "s"));
+        System.out.println((winners.size() > 1 ?  "The winners are ": "The Winner is ") + nameOfWinners +
+                " with " + winners.get(0).getScore() + " point" + (winners.get(0).getScore() == 1 ? "" : "s"));
     }
 
     public static ArrayList<Player> initialize(){
@@ -70,7 +80,7 @@ public class Main {
             else {
                 System.out.println(player.getName() + " rolled a " + player.getDieValue());
             }
-            System.out.println();
+
         }
     }
 
